@@ -11,8 +11,14 @@ function camelCaseRecursive(obj, cache) {
   if (!cache) {
     cache = new WeakMap();
   }
+
+  // Handle undefined and null cases
+  if (obj === undefined || obj === null) {
+    return obj;
+  }
+
   let res;
-  if (obj !== null && isObject(obj)) {
+  if (isObject(obj)) {
     if (cache.has(obj)) {
       return cache.get(obj);
     }
@@ -24,7 +30,7 @@ function camelCaseRecursive(obj, cache) {
     cache.set(obj, res);
   }
 
-  const transform = obj === null ? obj : mapObj(obj, (key, val) => {
+  const transform = mapObj(obj, (key, val) => {
     const newArray = [];
 
     if (Array.isArray(val)) {

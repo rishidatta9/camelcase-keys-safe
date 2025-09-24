@@ -177,7 +177,7 @@ describe('Nested keys within arrays and objects are camelCased', () => {
 describe('Circular references', () => {
   it('Should handle objects with circular references', () => {
     const parent = {
-      my_name: 'parent',
+      my_name: 'parent'
     };
     parent.child = parent;
 
@@ -190,12 +190,12 @@ describe('Circular references', () => {
 
   it('Should handle objects with circular references in their children', () => {
     const parent = {
-      name: 'parent',
+      name: 'parent'
     };
     const child = {
       name: 'child',
-      my_own_parent: parent,
-    }
+      my_own_parent: parent
+    };
     parent.child = child;
 
     const selfReferentialCamel = camelCaseKeys(parent);
@@ -207,12 +207,12 @@ describe('Circular references', () => {
 
   it('Should handle arrays with objects with circular references in their children', () => {
     const parent = {
-      name: 'parent',
+      name: 'parent'
     };
     const child = {
       name: 'child',
-      my_own_parent: parent,
-    }
+      my_own_parent: parent
+    };
     parent.child = child;
 
     const selfReferentialCamel = camelCaseKeys([parent]);
@@ -225,12 +225,12 @@ describe('Circular references', () => {
 
   it('Should handle objects with circular references in arrays of their children', () => {
     const parent = {
-      name: 'parent',
+      name: 'parent'
     };
     const child = {
       name: 'child',
-      my_own_parent: parent,
-    }
+      my_own_parent: parent
+    };
     parent.children = [child, child];
 
     const selfReferentialCamel = camelCaseKeys(parent);
@@ -247,14 +247,15 @@ describe('Circular references', () => {
 describe('Handling null root object', () => {
 
   it('Should not throw Error', () => {
-    var fn = function() {
+    const fn = function testNull() {
       return camelCaseKeys(null);
     };
     expect(fn).to.not.throw(Error);
   });
 
   it('Should return null', () => {
-    expect(camelCaseKeys(null)).to.be.null;
+    const result = camelCaseKeys(null);
+    void expect(result).to.be.null;
   });
 
 });
@@ -262,14 +263,15 @@ describe('Handling null root object', () => {
 describe('Handling undefined root object', () => {
 
   it('Should not throw Error', () => {
-    var fn = function() {
+    const fn = function testUndefined() {
       return camelCaseKeys(undefined);
     };
     expect(fn).to.not.throw(Error);
   });
 
   it('Should return undefined', () => {
-    expect(camelCaseKeys(undefined)).to.be.undefined;
+    const result = camelCaseKeys(undefined);
+    void expect(result).to.be.undefined;
   });
 
 });
