@@ -54,7 +54,7 @@ npm install camelcase-keys-safe
 ```
 
 ## More information on internal modules
-[map-obj](https://www.npmjs.com/package/map-obj) // TODO
+[map-obj](https://www.npmjs.com/package/map-obj)
 
 ## Contributing
 Simply make a pr with details on your bug and tests.
